@@ -40,7 +40,7 @@ steps:
 
     versionSpec: '$(python.version)'
   displayName: 'Use Python $(python.version)'
-- script: python "sum.py"
+- script: python -mhtmlib"sum.html"
 - task: PythonScript@0
 
 
