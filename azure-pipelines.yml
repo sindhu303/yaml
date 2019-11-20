@@ -14,46 +14,15 @@ pool:
 
 
   vmImage: 'ubuntu-latest'
-
-
-strategy:
-
-
-  matrix:
-
-
-    Python27:
-
-
-      python.version: '2.7'
-
-
-
 steps:
 
 
-- task: UsePythonVersion@0
-
-
+- task: ArchiveFiles@2
   inputs:
 
 
-    versionSpec: '$(python.version)'
-  displayName: 'Use Python $(python.version)'
+    rootFolderOrFile: :'$(build.sourcesDirectory)'
+    includeRootFolder: false
+- task: PublishBuildArtifacts@1
 - script: python -mhtmlib"sum.html"
-- task: PythonScript@0
 
-
-  inputs:
-
-
-    scriptSource: 'inline'
-
-
-    script: |
-
-
-      print('Hello world 1')
-
-
-      print('Hello world 2')
